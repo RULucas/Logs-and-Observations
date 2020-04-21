@@ -19,7 +19,7 @@ but now with custom hyperparameters. The problem with doing this is that:
 1.- Since the player allways charge against the boss, the boss allways wins if it uses the two attacks that it has every time 
 they are ready. Even then the agent uses attack in a random pattern or what it seems at random.
 2.- Because of 1, the boss never learns how ot move. It results in doing the same movements and in the same order it was doing 
-it in the first battles. Example: If it chooses to "Run Away" constantly in the beggining alternating occasionally with "Stand
+it in the first battles. Example: If it chooses to "Run Away" constantly in the begining alternating occasionally with "Stand
 Still", on the subsequenting fight he is going to do the same "Run Away" doing from time to time "Stand Still".
 3.- Since the agent is allways winning, he doesn't realize that actually it only needs to pick "Stand Still" and to the first
 attack and second attack on that order every time they are available.
@@ -33,3 +33,9 @@ Maybe mixing this with the winning and lossing reward system will be attacking e
 only doing five to ten attacks to maximize the positive reward over the negative.
 I forgot to record this session but at least it's reflected on the log fights.
 The tensorboard summaries of this training make more sense that any other one so far.
+
+Fight Logs 32. I tweak the reward system but it has the same problem as 31, there's a time that the boss stops to attack
+even if now it losses reward by loosing. I think the problem is the lenght of the episodes. On the begining they start very short
+but when the reward stabilizes close to 0 the episodes starts to be quite longer that at the begining, disrupting the stimated
+reward and the actual reward that the agent persives. A fix could be adding lectures to the learning making later episodes 
+longer, i.e. take more steps to finish.
