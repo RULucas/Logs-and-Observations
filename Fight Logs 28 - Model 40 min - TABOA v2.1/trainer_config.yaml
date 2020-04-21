@@ -1,0 +1,537 @@
+default:
+    trainer: ppo
+    batch_size: 1024
+    beta: 5.0e-3
+    buffer_size: 10240
+    epsilon: 0.2
+    hidden_units: 128
+    lambd: 0.95
+    learning_rate: 3.0e-4
+    learning_rate_schedule: linear
+    max_steps: 5.0e5
+    memory_size: 128
+    normalize: false
+    num_epoch: 3
+    num_layers: 2
+    time_horizon: 64
+    sequence_length: 64
+    summary_freq: 10000
+    use_recurrent: false
+    vis_encode_type: simple
+    reward_signals:
+        extrinsic:
+            strength: 1.0
+            gamma: 0.99
+
+FoodCollector:
+    normalize: false
+    beta: 5.0e-3
+    batch_size: 1024
+    buffer_size: 10240
+    max_steps: 2.0e6
+
+Bouncer:
+    normalize: true
+    max_steps: 4.0e6
+    num_layers: 2
+    hidden_units: 64
+
+PushBlock:
+    max_steps: 2.0e6
+    batch_size: 128
+    buffer_size: 2048
+    beta: 1.0e-2
+    hidden_units: 256
+    summary_freq: 60000
+    time_horizon: 64
+    num_layers: 2
+
+SmallWallJump:
+    max_steps: 5e6
+    batch_size: 128
+    buffer_size: 2048
+    beta: 5.0e-3
+    hidden_units: 256
+    summary_freq: 20000
+    time_horizon: 128
+    num_layers: 2
+    normalize: false
+
+BigWallJump:
+    max_steps: 2e7
+    batch_size: 128
+    buffer_size: 2048
+    beta: 5.0e-3
+    hidden_units: 256
+    summary_freq: 20000
+    time_horizon: 128
+    num_layers: 2
+    normalize: false
+
+Pyramids:
+    summary_freq: 30000
+    time_horizon: 128
+    batch_size: 128
+    buffer_size: 2048
+    hidden_units: 512
+    num_layers: 2
+    beta: 1.0e-2
+    max_steps: 1.0e7
+    num_epoch: 3
+    reward_signals:
+        extrinsic:
+            strength: 1.0
+            gamma: 0.99
+        curiosity:
+            strength: 0.02
+            gamma: 0.99
+            encoding_size: 256
+
+VisualPyramids:
+    time_horizon: 128
+    batch_size: 64
+    buffer_size: 2024
+    hidden_units: 256
+    num_layers: 1
+    beta: 1.0e-2
+    max_steps: 1.0e7
+    num_epoch: 3
+    reward_signals:
+        extrinsic:
+            strength: 1.0
+            gamma: 0.99
+        curiosity:
+            strength: 0.01
+            gamma: 0.99
+            encoding_size: 256
+
+3DBall:
+    normalize: true
+    batch_size: 64
+    buffer_size: 12000
+    summary_freq: 12000
+    time_horizon: 1000
+    lambd: 0.99
+    beta: 0.001
+
+3DBallHard:
+    normalize: true
+    batch_size: 1200
+    buffer_size: 12000
+    summary_freq: 12000
+    time_horizon: 1000
+    max_steps: 5.0e6
+    beta: 0.001
+    reward_signals:
+        extrinsic:
+            strength: 1.0
+            gamma: 0.995
+
+Tennis:
+    normalize: true
+    max_steps: 5.0e7
+    learning_rate_schedule: constant
+    batch_size: 1024
+    buffer_size: 10240
+    hidden_units: 256
+    time_horizon: 1000
+    self_play:
+        window: 10
+        play_against_current_self_ratio: 0.5
+        save_steps: 50000
+        swap_steps: 50000
+
+Soccer:
+    normalize: false
+    max_steps: 5.0e7
+    learning_rate_schedule: constant
+    batch_size: 2048
+    buffer_size: 20480
+    hidden_units: 512
+    time_horizon: 1000
+    num_layers: 2
+    self_play:
+        window: 10
+        play_against_current_self_ratio: 0.5
+        save_steps: 50000
+        swap_steps: 50000
+
+CrawlerStatic:
+    normalize: true
+    num_epoch: 3
+    time_horizon: 1000
+    batch_size: 2024
+    buffer_size: 20240
+    max_steps: 1e7
+    summary_freq: 30000
+    num_layers: 3
+    hidden_units: 512
+    reward_signals:
+        extrinsic:
+            strength: 1.0
+            gamma: 0.995
+
+CrawlerDynamic:
+    normalize: true
+    num_epoch: 3
+    time_horizon: 1000
+    batch_size: 2024
+    buffer_size: 20240
+    max_steps: 1e7
+    summary_freq: 30000
+    num_layers: 3
+    hidden_units: 512
+    reward_signals:
+        extrinsic:
+            strength: 1.0
+            gamma: 0.995
+
+Walker:
+    normalize: true
+    num_epoch: 3
+    time_horizon: 1000
+    batch_size: 2048
+    buffer_size: 20480
+    max_steps: 2e7
+    summary_freq: 30000
+    num_layers: 3
+    hidden_units: 512
+    reward_signals:
+        extrinsic:
+            strength: 1.0
+            gamma: 0.995
+
+Reacher:
+    normalize: true
+    num_epoch: 3
+    time_horizon: 1000
+    batch_size: 2024
+    buffer_size: 20240
+    max_steps: 2e7
+    summary_freq: 60000
+    reward_signals:
+        extrinsic:
+            strength: 1.0
+            gamma: 0.995
+
+Hallway:
+    use_recurrent: true
+    sequence_length: 64
+    num_layers: 2
+    hidden_units: 128
+    memory_size: 128
+    beta: 1.0e-2
+    num_epoch: 3
+    buffer_size: 1024
+    batch_size: 128
+    max_steps: 1.0e7
+    summary_freq: 10000
+    time_horizon: 64
+
+VisualHallway:
+    use_recurrent: true
+    sequence_length: 64
+    num_layers: 1
+    hidden_units: 128
+    memory_size: 128
+    beta: 1.0e-2
+    num_epoch: 3
+    buffer_size: 1024
+    batch_size: 64
+    max_steps: 1.0e7
+    summary_freq: 10000
+    time_horizon: 64
+
+VisualPushBlock:
+    use_recurrent: true
+    sequence_length: 32
+    num_layers: 1
+    hidden_units: 128
+    memory_size: 128
+    beta: 1.0e-2
+    num_epoch: 3
+    buffer_size: 1024
+    batch_size: 64
+    max_steps: 3.0e6
+    summary_freq: 60000
+    time_horizon: 64
+
+GridWorld:
+    batch_size: 32
+    normalize: false
+    num_layers: 1
+    hidden_units: 256
+    beta: 5.0e-3
+    buffer_size: 256
+    max_steps: 500000
+    summary_freq: 20000
+    time_horizon: 5
+    reward_signals:
+        extrinsic:
+            strength: 1.0
+            gamma: 0.9
+
+Basic:
+    batch_size: 32
+    normalize: false
+    num_layers: 1
+    hidden_units: 20
+    beta: 5.0e-3
+    buffer_size: 256
+    max_steps: 5.0e5
+    summary_freq: 2000
+    time_horizon: 3
+    reward_signals:
+        extrinsic:
+            strength: 1.0
+            gamma: 0.9
+
+BossBrainTABOAv1:
+    trainer: ppo
+    lambd: 0.9
+    batch_size: 237
+    buffer_size: 2370
+    num_epoch: 3
+    learning_rate: 3.0e-4
+    learning_rate_schedule: constant
+    time_horizon: 2048
+    max_steps: 5.0e7
+    beta: 1.0e-4
+    epsilon: 0.1
+    normalize: false
+    num_layers: 20
+    hidden_units: 256
+    vis_encode_type: simple
+    use_recurrent: false
+    summary_freq: 2500
+    reward_signals:
+        extrinsic:
+            strength: 1.0
+            gamma: 0.99
+
+BossBrainMTABOAv1:
+    trainer: ppo
+    lambd: 0.95
+    batch_size: 512
+    buffer_size: 409600
+    num_epoch: 10
+    learning_rate: 1e-3
+    learning_rate_schedule: constant
+    time_horizon: 1000
+    beta: 1.0e-2
+    epsilon: 0.2
+    normalize: false
+    num_layers: 3
+    hidden_units: 412
+    vis_encode_type: simple
+    use_recurrent: false
+    summary_freq: 2500
+    max_steps: 5.0e7
+    reward_signals:
+        extrinsic:
+            strength: 1.0
+            gamma: 0.99
+
+BossBrainGAILTABOAv1:
+    trainer: ppo
+    lambd: 0.9
+    batch_size: 237
+    buffer_size: 2370
+    num_epoch: 3
+    learning_rate: 3.0e-4
+    learning_rate_schedule: constant
+    time_horizon: 1000
+    beta: 1.0e-2
+    epsilon: 0.2
+    normalize: false
+    num_layers: 20
+    hidden_units: 256
+    vis_encode_type: simple
+    use_recurrent: false
+    summary_freq: 2000
+    max_steps: 5.0e7
+    reward_signals:
+        extrinsic:
+            strength: 1.0
+            gamma: 0.99
+        gail:
+            strength: 0.01
+            gamma: 0.99
+            encoding_size: 128
+            demo_path: D:/Documentos/Unity/Fight Logs - Demos - Brains - Models/Fight Logs 2 - Demos - 1 hr/DemoTABOAv2.demo
+
+BossBrainTABOAv2:
+    trainer: ppo
+    lambd: 0.9
+    batch_size: 237
+    buffer_size: 2370
+    num_epoch: 3
+    learning_rate: 3.0e-4
+    learning_rate_schedule: constant
+    time_horizon: 1000
+    beta: 1.0e-2
+    epsilon: 0.2
+    normalize: false
+    num_layers: 20
+    hidden_units: 256
+    vis_encode_type: simple
+    use_recurrent: false
+    summary_freq: 2250
+    max_steps: 5.0e7
+    reward_signals:
+        extrinsic:
+            strength: 1.0
+            gamma: 0.99
+
+BossBrainMTABOAv2:
+    trainer: ppo
+    lambd: 0.95
+    batch_size: 512
+    buffer_size: 409600
+    num_epoch: 10
+    learning_rate: 1.0e-3
+    learning_rate_schedule: constant
+    time_horizon: 2048
+    max_steps: 1e7
+    beta: 1.0e-2
+    epsilon: 0.3
+    normalize: false
+    num_layers: 3
+    hidden_units: 512
+    vis_encode_type: simple
+    use_recurrent: false
+    summary_freq: 2500
+    reward_signals:
+        extrinsic:
+            strength: 1.0
+            gamma: 0.99
+
+BossBrainGAILTABOAv2:
+    trainer: ppo
+    lambd: 0.9
+    batch_size: 237
+    buffer_size: 2370
+    num_epoch: 3
+    learning_rate: 3.0e-4
+    learning_rate_schedule: constant
+    time_horizon: 1000
+    beta: 1.0e-2
+    epsilon: 0.2
+    normalize: false
+    num_layers: 20
+    hidden_units: 256
+    vis_encode_type: simple
+    use_recurrent: false
+    summary_freq: 2500
+    max_steps: 5.0e7
+    reward_signals:
+        extrinsic:
+            strength: 1.0
+            gamma: 0.99
+        gail:
+            strength: 0.01
+            gamma: 0.99
+            encoding_size: 128
+            demo_path: D:/Documentos/Unity/Fight Logs - Demos - Brains - Models/Fight Logs 9 - Demo 1hr - TABOA v2.1/DemoTABOAv21.demo
+
+BossBrainTABFAv2:
+    trainer: ppo
+    lambd: 0.9
+    buffer_size: 200000
+    batch_size: 250
+    num_epoch: 10
+    learning_rate: 1.0e-5
+    learning_rate_schedule: constant
+    time_horizon: 2250 #FOR ONE AGENT
+    #time_horizon: 4250 #FOR FIVE AGENTS
+    #time_horizon: 11000 #FOR TEN AGENTS
+    max_steps: 1.0e7
+    beta: 1.0e-2
+    epsilon: 0.2
+    normalize: false
+    num_layers: 40
+    hidden_units: 512
+    vis_encode_type: simple
+    use_recurrent: false
+    summary_freq: 5500   #FOR ONE AGENT
+    #summary_freq: 8500  #FOR FIVE AGENTS
+    #summary_freq: 22000
+    reward_signals:
+        extrinsic:
+            strength: 1.0
+            gamma: 0.99
+
+BossBrainMinTABFAv2:
+    trainer: ppo
+    lambd: 0.9
+    buffer_size: 2048
+    batch_size: 32
+    num_epoch: 3
+    learning_rate: 1.0e-5
+    learning_rate_schedule: constant
+    time_horizon: 32
+    max_steps: 5.0e5
+    beta: 1.0e-4
+    epsilon: 0.1
+    normalize: false
+    num_layers: 1
+    hidden_units: 32
+    vis_encode_type: simple
+    use_recurrent: false
+    summary_freq: 2500   #FOR ONE AGENT
+    #summary_freq: 8500  #FOR FIVE AGENTS
+    #summary_freq: 22000
+    reward_signals:
+        extrinsic:
+            strength: 1.0
+            gamma: 0.99
+
+BossBrainMidTABFAv2:
+    trainer: ppo
+    lambd: 0.925
+    buffer_size: 205904
+    batch_size: 272
+    num_epoch: 6
+    learning_rate: 5.0e-4
+    learning_rate_schedule: constant
+    time_horizon: 1040
+    max_steps: 5.0e6
+    beta: 5.0e-3
+    epsilon: 0.2
+    normalize: false
+    num_layers: 2
+    hidden_units: 272
+    vis_encode_type: simple
+    use_recurrent: false
+    #summary_freq: 2500   #FOR ONE AGENT
+    #summary_freq: 8500  #FOR FIVE AGENTS
+    summary_freq: 22000 #FOR TEN AGENTS
+    reward_signals:
+        extrinsic:
+            strength: 1.0
+            gamma: 0.99
+
+BossBrainMaxTABFAv2:
+    trainer: ppo
+    lambd: 0.95
+    batch_size: 409600
+    buffer_size: 512
+    num_epoch: 10
+    learning_rate: 1.0e-3
+    learning_rate_schedule: constant
+    time_horizon: 2048
+    max_steps: 1.0e7
+    beta: 1.0e-2
+    epsilon: 0.3
+    normalize: false
+    num_layers: 3
+    hidden_units: 512
+    vis_encode_type: simple
+    use_recurrent: false
+    summary_freq: 2500   #FOR ONE AGENT
+    #summary_freq: 8500  #FOR FIVE AGENTS
+    #summary_freq: 22000 #FOR TEN AGENTS
+    reward_signals:
+        extrinsic:
+            strength: 1.0
+            gamma: 0.99

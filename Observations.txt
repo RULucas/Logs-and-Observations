@@ -1,0 +1,35 @@
+Fight Logs from 17 through 25 don't add anything good to analyze. The only good thing about having done these test is that 
+help me realize the impact that the amount of observations have according the hyperparameters chosen for the training.
+Another take from this is that the actions done by the agent are allways the same two - one for each array of actions -
+doesn't matter if you have 1, 5 or 10 agents. The amount of agents only help to add steps to the simulations, if every 
+agent is going to do the same over and over through the testing adding more agents doesn't help much. Also, if one
+agent is not helpfull (doesn't learn) adding more agents won't change that fact.
+The Unity recommended ranges for the hyperparameters don't work properly whe using a high amount of observations and/or 
+a complex enviroment.
+
+Fight Logs from 26 through 29 their not that helpfull. I change the reward system to try let the agent discriminate when it
+should be using an attack, it wiould also keep receiving a negative or positive reward according the result of the fight.
+I use it more to test the hyperparameters needed for a large quantity of observations. The only thing that I got from these 
+trials is that the agent can't learn how it should move without some direct impact on the reward system, the agent acts way 
+to random to be learning something - maybe this has to do with some of the hyperparameters -, there's nothing usefull to take
+from the tenserboard summaries.
+
+Fight Logs 30 is just going back to the simple version of rewarding positive or negativley regarding the outcome of the fight,
+but now with custom hyperparameters. The problem with doing this is that: 
+1.- Since the player allways charge against the boss, the boss allways wins if it uses the two attacks that it has every time 
+they are ready. Even then the agent uses attack in a random pattern or what it seems at random.
+2.- Because of 1, the boss never learns how ot move. It results in doing the same movements and in the same order it was doing 
+it in the first battles. Example: If it chooses to "Run Away" constantly in the beggining alternating occasionally with "Stand
+Still", on the subsequenting fight he is going to do the same "Run Away" doing from time to time "Stand Still".
+3.- Since the agent is allways winning, he doesn't realize that actually it only needs to pick "Stand Still" and to the first
+attack and second attack on that order every time they are available.
+
+Fight Logs 31. For this particular one I change the approach. Instead of having him learning from loosing or winning, I set up
+a reward system around doing the attacks on intervals that simulates the "Thinking Time" between attacks. If it chooses an
+attack to early or to late it receives a negative reward and if it does the attack in a good time interval it receives a 
+positive one. On this example it does learn but to an extent, it gets to a point in which it decides to do less attacks 
+minimizing the negative reward and getting more positive rewards.
+Maybe mixing this with the winning and lossing reward system will be attacking every time it is on a good interval and not
+only doing five to ten attacks to maximize the positive reward over the negative.
+I forgot to record this session but at least it's reflected on the log fights.
+The tensorboard summaries of this training make more sense that any other one so far.
