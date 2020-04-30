@@ -39,3 +39,44 @@ even if now it losses reward by loosing. I think the problem is the lenght of th
 but when the reward stabilizes close to 0 the episodes starts to be quite longer that at the begining, disrupting the stimated
 reward and the actual reward that the agent persives. A fix could be adding lectures to the learning making later episodes 
 longer, i.e. take more steps to finish.
+
+Fight Logs 33 - 35. These are the first attempt of going back to basics. The only actions that the "Boss" and the "Player" has are
+attacking each other, removing a percentage of the health. While the "Player" has only one attack the "Boss" has three but with 
+only using one of them can kill the "Player" and receive its reward. On Log 33 and 35, the "Boss" got to a point in which he 
+started to get a constant positive reward and doing just the attack that would give him the best result. While on Log 34 he 
+never reach that point, the agent saw the positive reward very scarcely at the begining locking him afterwards on a state in 
+which he never got to receive it again.
+
+Fight Logs 36 and 37. First attempt of "teaching" the agent how to move towards the "Player". On these cases it was still set up
+the discrete model with two branches, one for the movement actions and the other one for the attacks. None of the two gave good
+results.
+
+Fight Logs 38 - 41. The first two cases where using a Continuos vector action while the latter two used Discrete vector action but
+with one brach, unlike the past project that used two branches. Both models of vector action where tested with movement actions chosen 
+by the agent and without the posibility of choose, meaning the agent allways goes to the "Player" by design (NM show on folder name). 
+The Logs 38 and 39 - Continuos case - showed that the agent learns how to get closer to the "Player" but never "learns"
+which attack to do, even showing a low amount of attacks done and that also can be seen without the movement. While Logs 40 and 41
+- Discrete case - showed that the agent gets to learn which attack to do when it doesn't have to "think" on the movemnt action and
+when it have to choose a movement it gets a positive reward from time to time but never gets to a constant state. Given the results
+from this point onwards I think the best course of actions is to stick to a Discrete model and improve on the reward system.
+
+Fight Logs 42 and 43. They are opposites regarding the results gotten and what can be seen on the demonstrations. While the first one 
+got to a point in which the agent got positive rewards loosly sparse, shown that getting a few negative rewards on that context makes
+the agent reformulate the movement actions chosen resulting on loosing the positive rewards that was getting before that - meaning
+that it gets sparser with time. But the second one shows that, when it get to a more constant positive reward even if he gets a 
+negative reward it doesn't affect to much on the policy that was following and contiues to make the same course of actions that allows
+him to keep getting positive rewards on stable pass.
+
+Fight Logs 44 is just a DEMO recording for using on Imitation Learning.
+
+Fight Logs 45 - 47. On these iteration of the project I started testing the training with Imitation. The "G" on the folder is to 
+distinguish between Imitation (with "G" in the name) and non-Imitation learning, the letter comes from the structure use for Imitation
+learning that is G.A.I.L. The three of them showed that the agent receives more positive rewards from the begining of the training,
+making it seem as he's following the demonstration. After a period of time the agent starts to do more random actions, this could be
+seem as stop following the demonstration and continuing its progress as a normal training and here is where the Log 46 diverge from
+the other two. On Log 46 it can be seen the same as before, getting a sparse positive reward and getting a negative one makes the 
+agent reevaluate its policy, making it degenerate the "good" behavior and start to lose rewards. While Logs 45 and 47 when it starts
+to go away from the imitation, got to a point in which it started to get a constant positive reward and doing the same set of actions
+over and over. The difference between 45 and 47 is that, on the first one at the end of the testing it seems that the agent was still
+trying new actions and policies while in the second one the set of actions where more constant making it seem as the policy was also
+not changing, given the results I can say that 45 needed more time to have the same results of 47.

@@ -1,0 +1,169 @@
+default:
+    trainer: ppo
+    batch_size: 1024
+    beta: 5.0e-3
+    buffer_size: 10240
+    epsilon: 0.2
+    hidden_units: 128
+    lambd: 0.95
+    learning_rate: 3.0e-4
+    learning_rate_schedule: linear
+    max_steps: 5.0e5
+    memory_size: 128
+    normalize: false
+    num_epoch: 3
+    num_layers: 2
+    time_horizon: 64
+    sequence_length: 64
+    summary_freq: 10000
+    use_recurrent: false
+    vis_encode_type: simple
+    reward_signals:
+        extrinsic:
+            strength: 1.0
+            gamma: 0.99
+
+BossBrain1:
+    trainer: ppo
+    lambd: 0.9
+    buffer_size: 200000
+    batch_size: 250
+    num_epoch: 10
+    learning_rate: 1.0e-7
+    learning_rate_schedule: constant
+    time_horizon: 3250 #FOR ONE AGENT
+    #time_horizon: 4250 #FOR FIVE AGENTS
+    #time_horizon: 11000 #FOR TEN AGENTS
+    max_steps: 1.0e7
+    beta: 1.0e-5
+    epsilon: 0.2
+    normalize: false
+    num_layers: 40
+    hidden_units: 512
+    vis_encode_type: simple
+    use_recurrent: false
+    sequence_length: 64
+    memory_size: 256
+    summary_freq: 6500   #FOR ONE AGENT
+    #summary_freq: 8500  #FOR FIVE AGENTS
+    #summary_freq: 22000
+    reward_signals:
+        extrinsic:
+            strength: 1.0
+            gamma: 0.99
+BossBrain2:
+    trainer: ppo
+    lambd: 0.9
+    buffer_size: 200000
+    batch_size: 250
+    num_epoch: 5
+    learning_rate: 1.0e-7
+    learning_rate_schedule: constant
+    time_horizon: 3250 #FOR ONE AGENT
+    #time_horizon: 4250 #FOR FIVE AGENTS
+    #time_horizon: 11000 #FOR TEN AGENTS
+    max_steps: 1.0e7
+    beta: 1.0e-7
+    epsilon: 0.2
+    normalize: false
+    num_layers: 3
+    hidden_units: 50
+    vis_encode_type: simple
+    use_recurrent: true
+    sequence_length: 64
+    memory_size: 256
+    summary_freq: 6500   #FOR ONE AGENT
+    #summary_freq: 8500  #FOR FIVE AGENTS
+    #summary_freq: 22000
+    reward_signals:
+        extrinsic:
+            strength: 1.0
+            gamma: 0.99
+BossBrain:
+    trainer: ppo
+    lambd: 0.9
+    buffer_size: 2048
+    batch_size: 32
+    num_epoch: 3
+    learning_rate: 1.0e-5
+    learning_rate_schedule: linear
+    time_horizon: 250 #FOR ONE AGENT
+    #time_horizon: 4250 #FOR FIVE AGENTS
+    #time_horizon: 11000 #FOR TEN AGENTS
+    max_steps: 1.0e7
+    beta: 1.0e-2
+    epsilon: 0.1
+    normalize: false
+    num_layers: 3
+    hidden_units: 32
+    vis_encode_type: simple
+    use_recurrent: true
+    sequence_length: 16
+    memory_size: 256
+    summary_freq: 500   #FOR ONE AGENT
+    #summary_freq: 8500  #FOR FIVE AGENTS
+    #summary_freq: 22000
+    reward_signals:
+        extrinsic:
+            strength: 1.0
+            gamma: 0.99
+BossBrainTestD:
+    trainer: ppo
+    lambd: 0.9
+    buffer_size: 4096
+    #batch_size: 32  #ONLY DOING ATTACK
+    batch_size: 256  #ATTACK AND MOVEMENT
+    num_epoch: 10
+    learning_rate: 1.0e-5
+    learning_rate_schedule: linear
+    #time_horizon: 5 #ONLY DOING ATTACK
+    time_horizon: 350 #ATTACK AND MOVEMENT
+    #time_horizon: 11000 #FOR TEN AGENTS
+    max_steps: 1.0e7
+    beta: 1.0e-2
+    epsilon: 0.1
+    normalize: false
+    num_layers: 3
+    hidden_units: 256
+    vis_encode_type: simple
+    use_recurrent: true
+    #sequence_length: 3  #ONLY DOING ATTACK
+    sequence_length: 6  #ATTACK AND MOVEMENT
+    memory_size: 32
+    #summary_freq: 10   #ONLY DOING ATTACK
+    summary_freq: 750  #ATTACK AND MOVEMENT
+    #summary_freq: 22000
+    reward_signals:
+        extrinsic:
+            strength: 1.0
+            gamma: 0.99
+BossBrainTest:
+    trainer: ppo
+    lambd: 0.9
+    buffer_size: 20480
+    #batch_size: 32  #ONLY DOING ATTACK
+    batch_size: 2048  #ATTACK AND MOVEMENT
+    num_epoch: 10
+    learning_rate: 1.0e-5
+    learning_rate_schedule: linear
+    #time_horizon: 5 #ONLY DOING ATTACK
+    time_horizon: 350 #ATTACK AND MOVEMENT
+    #time_horizon: 11000 #FOR TEN AGENTS
+    max_steps: 1.0e7
+    beta: 1.0e-2
+    epsilon: 0.1
+    normalize: false
+    num_layers: 3
+    hidden_units: 512
+    vis_encode_type: simple
+    use_recurrent: true
+    #sequence_length: 3  #ONLY DOING ATTACK
+    sequence_length: 6  #ATTACK AND MOVEMENT
+    memory_size: 256
+    #summary_freq: 10   #ONLY DOING ATTACK
+    summary_freq: 750  #ATTACK AND MOVEMENT
+    #summary_freq: 22000
+    reward_signals:
+        extrinsic:
+            strength: 1.0
+            gamma: 0.99
