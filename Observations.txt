@@ -80,3 +80,18 @@ to go away from the imitation, got to a point in which it started to get a const
 over and over. The difference between 45 and 47 is that, on the first one at the end of the testing it seems that the agent was still
 trying new actions and policies while in the second one the set of actions where more constant making it seem as the policy was also
 not changing, given the results I can say that 45 needed more time to have the same results of 47.
+
+Fight Logs 48, 49 and 51. By following some of the aspects of the examples project given by unity, I amplified the amount of steps for doing
+the summaries of the episodes. That simple change made the training more constant and better, now is more difficult for the agent to be
+stuck on a bad policy. It also help me realize about the big movement observation that I added on Google Drive. I also made some changes
+to hyperparameters according to what the description in the documentation is, but it seems as most of the parameters don't influence to 
+much after going outside the bounds of the recommended values. 
+
+Fight Logs 50. New DEMO to take in acount the changes to the hyperparameters made. Also change the actions taken during the demonstration,
+in this case it start by choosing one time the "RunAway" action, follow it by one of the attacks and then continues by choosing all the time
+the "MoveForward" action until it reachs a certain distance to start doing the other attack until killing the player.
+
+Fight Logs 52 - 53. Using the newest DEMO, the behavior deteriorated over time. It start well but not much better than without the Imitation,
+and at some point the policy starts to get worser and worser. I don't know how to explain why this is happening. I changed the weight that
+the imitation has over the training, meaning that it has to try to behave more like the demonstration instead of trying to figure things
+out by normal training. Coincidentally, having it mimicking the demonstration (Log 53) gave worse results over time.
