@@ -95,3 +95,10 @@ Fight Logs 52 - 53. Using the newest DEMO, the behavior deteriorated over time. 
 and at some point the policy starts to get worser and worser. I don't know how to explain why this is happening. I changed the weight that
 the imitation has over the training, meaning that it has to try to behave more like the demonstration instead of trying to figure things
 out by normal training. Coincidentally, having it mimicking the demonstration (Log 53) gave worse results over time.
+
+Fight Logs 54. Using the newest version of ML-Toolkit. Changed som of the hyperparameters and the reward system. I took out the reward for 
+attacking and lower the values for winning, loosing and getting close to the target. It start going on the wrong direction until the policy
+changes and start going fordward and getting some reward. After the reward gets close and constant to one, the behavior shift to pretty much
+not doing the "RunAway" action anymore. Once he gets to receiving the maximum amount or close at least in a constant take the agent, not 
+has learned how to get to the player and choose the right attack (optimal) but also learn the range in which he won't receive an attack from 
+the player, hence the behavior of going close and doing a shift to the right, thing I didn't think it was possible to do.

@@ -1,0 +1,92 @@
+default:
+    trainer: ppo
+    batch_size: 1024
+    beta: 5.0e-3
+    buffer_size: 10240
+    epsilon: 0.2
+    hidden_units: 128
+    lambd: 0.95
+    learning_rate: 3.0e-4
+    learning_rate_schedule: linear
+    max_steps: 5.0e5
+    memory_size: 128
+    normalize: false
+    num_epoch: 3
+    num_layers: 2
+    time_horizon: 64
+    sequence_length: 64
+    summary_freq: 10000
+    use_recurrent: false
+    vis_encode_type: simple
+    reward_signals:
+        extrinsic:
+            strength: 1.0
+            gamma: 0.99
+BossBrainTest:
+    trainer: ppo
+    lambd: 0.95
+    buffer_size: 4096
+    #batch_size: 32  #ONLY DOING ATTACK
+    batch_size: 256  #ATTACK AND MOVEMENT
+    num_epoch: 10
+    learning_rate: 1.0e-5
+    learning_rate_schedule: linear
+    #time_horizon: 5 #ONLY DOING ATTACK
+    time_horizon: 2048 #ATTACK AND MOVEMENT
+    #time_horizon: 11000 #FOR TEN AGENTS
+    max_steps: 1.0e7
+    beta: 1.0e-5
+    epsilon: 0.1
+    normalize: false
+    num_layers: 3
+    hidden_units: 512
+    vis_encode_type: simple
+    use_recurrent: false
+    #sequence_length: 3  #ONLY DOING ATTACK
+    #sequence_length: 6  #ATTACK AND MOVEMENT
+    #memory_size: 256
+    #summary_freq: 10   #ONLY DOING ATTACK
+    summary_freq: 10000  #ATTACK AND MOVEMENT
+    #summary_freq: 22000
+    reward_signals:
+        extrinsic:
+            strength: 1.0
+            gamma: 0.99
+BossBrainTestG:
+    trainer: ppo
+    lambd: 0.9
+    buffer_size: 4096
+    #batch_size: 32  #ONLY DOING ATTACK
+    batch_size: 256  #ATTACK AND MOVEMENT
+    num_epoch: 10
+    learning_rate: 1.0e-5
+    learning_rate_schedule: linear
+    #time_horizon: 5 #ONLY DOING ATTACK
+    time_horizon: 5000 #ATTACK AND MOVEMENT
+    #time_horizon: 11000 #FOR TEN AGENTS
+    max_steps: 1.0e7
+    beta: 1.0e-5
+    epsilon: 0.1
+    normalize: false
+    num_layers: 3
+    hidden_units: 512
+    vis_encode_type: simple
+    use_recurrent: false
+    #sequence_length: 3  #ONLY DOING ATTACK
+    #sequence_length: 6  #ATTACK AND MOVEMENT
+    #memory_size: 256
+    #summary_freq: 10   #ONLY DOING ATTACK
+    summary_freq: 10000  #ATTACK AND MOVEMENT
+    #summary_freq: 22000
+    reward_signals:
+        extrinsic:
+            strength: 1.0
+            gamma: 0.99
+        gail:
+            strength: 0.6
+            gamma: 0.8
+            encoding_size: 256
+            learning_rate: 1.0e-5
+            use_actions: true
+            use_vail: true
+            demo_path: D:/Documentos/Unity/Logs and Observations/Fight Logs 50 - Demo 35 min - TABFA v3.2/DemoTABFAGv32.demo
